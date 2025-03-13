@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Singh | Full Stack Developer</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        @media (max-width: 768px) {
+
+            body {
+                padding: 0 1rem;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            .center-container {
+                padding: 0 1rem;
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .project-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .certification-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 8px;
+            }
+
+            .contact-form button[type="submit"] {
+                padding: 8px;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .social-links a {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .skills-grid,
+            .project-container,
+            .certification-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .contact-form {
+                max-width: 100%;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+        }
+
+        :root {
+            --primary: #00adb5;
+            --dark: #1a1a1a;
+            --light: #eeeeee;
+            --shadow: rgba(0, 173, 181, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.9);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .decorative-line {
+            stroke: var(--primary);
+            stroke-width: 2;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 2s forwards;
+        }
+
+        .flow-line {
+            background: var(--primary);
+            height: 2px;
+            width: 80%;
+            margin: 2rem auto;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            transition: all 0.3s ease;
+        }
+
+        .center-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 12px var(--shadow);
+        }
+
+        h1,
+        h2 {
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #00adb5, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s ease-in-out, pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: slideIn 2s ease-in-out forwards;
+        }
+
+        .skill-card {
+            background-color: #252525;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 173, 181, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px var(--shadow);
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: slideIn 2s ease-in-out forwards;
+        }
+
+        .project-card {
+            background-color: #252525;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 173, 181, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px var(--shadow);
+        }
+
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: slideIn 2s ease-in-out forwards;
+        }
+
+        .certification-card {
+            background-color: #252525;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 173, 181, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px var(--shadow);
+        }
+
+        .contact-form {
+            max-width: 400px;
+            width: 100%;
+            margin-top: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #252525;
+            color: var(--light);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            box-shadow: 0 0 5px var(--primary);
+        }
+
+        .contact-form button[type="submit"] {
+            padding: 10px;
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form button[type="submit"]:hover {
+            background-color: #00ff88;
+            transform: scale(1.1);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        #about {
+            padding: 4rem 10%;
+            background: var(--dark);
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .about-image img {
+            width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 173, 181, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px var(--shadow);
+        }
+
+        .about-text {
+            max-width: 600px;
+            text-align: left;
+            color: var(--light);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .about-text strong {
+            color: var(--primary);
+        }
+
+        .about-text em {
+            font-style: italic;
+            color: var(--light);
+        }
+
+        .flow-line {
+            background-color: var(--primary);
+            height: 2px;
+            width: 80%;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#home" style="text-decoration: none; color: var(--primary); font-size: 1.5rem;">Krishna
+                Singh</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="center-container" style="height: 100vh;">
+        <img src="portim.jpeg" alt="Profile Photo">
+        <h1>Krishna Singh</h1>
+        <p>Web Developer & Problem Solver</p>
+        <div class="flow-line"></div>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/krishna-singh-51436733a" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Krishna27Singh" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://leetcode.com/u/krishna_singh27/" target="_blank"><i class="fas fa-code"></i></a>
+            <a href="https://www.instagram.com/krishnaaasiingh/" target="_blank"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://x.com/kri_sh_na_27?t=kyhwgsl9KHlXegwWHvGZ0Q&s=08" target="_blank"><i
+                    class="fab fa-twitter"></i></a>
+            <a href="mailto:krishnasingh97857@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919785748390"><i class="fas fa-phone"></i></a>
+        </div>
+    </section>
+
+    <section id="about" class="center-container">
+        <h2>About Me</h2>
+        <div class="about-container">
+
+            <div class="about-text" data-aos="fade-left">
+                <p>Hi there! 👋</p>
+                <p>
+                    I’m <strong>Krishna Singh</strong>, a 1st-year Bachelor of Technology student at
+                    <em>Dr. B.R. Ambedkar National Institute of Technology</em>.
+                </p>
+                <p>
+                    I’m passionate about both frontend and backend development, and I thrive on
+                    crafting websites with stunning, user-friendly interfaces. Alongside web development,
+                    I have a keen interest in Data Structures and Algorithms, which helps me solve complex
+                    problems effectively.
+                </p>
+                <p>
+                    I believe that the combination of a solid foundation in programming and a creative
+                    approach to design is key to building impactful digital experiences.
+                </p>
+                <p>Let’s connect and create something amazing together! 🌟</p>
+            </div>
+        </div>
+
+        <div class="flow-line"></div>
+    </section>
+
+
+    <section id="skills" class="center-container">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">Object Oriented Programming</div>
+            <div class="skill-card">Data Structures & Algorithm</div>
+            <div class="skill-card">C, C++</div>
+            <div class="skill-card">HTML, CSS, JavaScript</div>
+            <div class="skill-card">Figma</div>
+            <div class="skill-card">Bootstrap</div>
+            <div class="skill-card">Node.js & Express.js & EJS</div>
+            <div class="skill-card">MongoDB</div>
+            <div class="skill-card">Python (Basic)</div>
+        </div>
+        <div class="flow-line"></div>
+    </section>
+
+    <section id="projects" class="center-container">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="certification-card"><a style="text-decoration: none; color: white;"
+                    href="https://github.com/Krishna27Singh/MoodBloom">MoodBloom (Mood Tracking Web app)</a></div>
+            <div class="certification-card"><a style="text-decoration: none; color: white;"
+                    href="https://github.com/Krishna27Singh/Url-Generator">LinkLoom (URL Shortener)</a></div>
+            <div class="certification-card"><a style="text-decoration: none; color: white;"
+                    href="https://github.com/Krishna27Singh/snake-game">Snake Game</a></div>
+            <div class="certification-card"><a style="text-decoration: none; color: white;"
+                    href="https://github.com/Krishna27Singh/Tic-Tac-Toe">Tic Tac Toe Game</a></div>
+        </div>
+        <div class="flow-line"></div>
+    </section>
+
+    <section id="resume" class="center-container">
+        <h2>Resume</h2>
+        <div class="resume-container">
+            <p>
+                Download my resume to learn more about my skills, experience, and achievements.
+            </p>
+            <a href="https://drive.google.com/file/d/1ajyRqKYJUQgfYBMhHfrvYIxztW9ep9j7/view?usp=sharing"
+                class="resume-download">
+                <i class="fas fa-file-pdf"></i> Download Resume
+            </a>
+        </div>
+        <div class="flow-line"></div>
+    </section>
+
+
+     <section id="contact" class="center-container">
+        <h2>Contact Me</h2>
+        <form action="https://formspree.io/f/xoveqrla" method="post" class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section> 
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+
+</html>
